@@ -233,7 +233,7 @@ export const JeecgListMixin = {
       if(!fileName || typeof fileName != "string"){
         fileName = "导出文件"
       }
-      let param = {...this.queryParam};
+      let param = {...this.getQueryParams()};
       if(this.selectedRowKeys && this.selectedRowKeys.length>0){
         param['selections'] = this.selectedRowKeys.join(",")
       }
@@ -297,7 +297,8 @@ export const JeecgListMixin = {
       return getFileAccessHttpUrl(text)
     },
     /* 文件下载 */
-    uploadFile(text){
+    // update--autor:lvdandan-----date:20200630------for：修改下载文件方法名uploadFile改为downloadFile------
+    downloadFile(text){
       if(!text){
         this.$message.warning("未知的文件")
         return;
